@@ -5,7 +5,7 @@ public class ThreadedMinimumPairwiseDistance implements MinimumPairwiseDistance 
 	//initializing Minimum to max value.
 	static int Minimum = Integer.MAX_VALUE;
 	//function to determine if the current minimum is lower than the new minimum
-     public void areYouUpTodate? (int resultsMaybe) {
+     public void areYouUpTodate (int resultsMaybe) {
         if(resultsMaybe < Minimum) {
                 Minimum = resultsMaybe;
         } else {
@@ -17,14 +17,14 @@ public class ThreadedMinimumPairwiseDistance implements MinimumPairwiseDistance 
 	@Override
     public int minimumPairwiseDistance(int[] values) {
        // throw new UnsupportedOperationException();
-    	Thread LL = new Thread(new LL(values));
+    Thread LL = new Thread(new LL(values));
 	Thread BR = new Thread(new LL(values));
 	Thread TR = new Thread(new LL(values));
 	Thread C = new Thread(new LL(values));
 	//Starting all of the previous threads
 	LL.start();
 	BR.start();
-	TR.sart();
+	TR.start();
 	C.start();
 	try{ 
 		//joining all of the previous threads. 
@@ -57,19 +57,20 @@ public class ThreadedMinimumPairwiseDistance implements MinimumPairwiseDistance 
 	}	
 	//Thread then runs the following nest for loops, looping over its area to find the minimum value of
 	//that area
-	//then checks the current global min to the found min, if the found min is lower it updates the global	
+	//then checks the current global min to the found min, if the found min is lower it updates the global
+	//the area checked by the for loop changes for each thread.
 	public void run() {
 		int new_result_maybe = Integer.MAX_VALUE;
 		for (int i = 0; i < values. length/2; i++) {
     			for (int j = 0; j < i; j++) {
 				int difference = Math.abs(values[i] - values[j]);
-		    		if (differenec < new_result_maybe) {
-			    		new_results_maybe = difference;
+		    		if (difference < new_result_maybe) {
+			    		new_result_maybe = difference;
 				    }
 		}
 
 	}
-	areYouUpTodate?(new_result_maybe);
+	areYouUpTodate(new_result_maybe);
 
     }
 }
@@ -85,13 +86,13 @@ public class ThreadedMinimumPairwiseDistance implements MinimumPairwiseDistance 
                 for (int i = values.length/2; i < values. length; i++) {                
                         for (int j = 0; j < i - values.length/2; j++) {
                                 int difference = Math.abs(values[i] - values[j]);
-                                if (differenec < new_result_maybe) {
-                                        new_results_maybe = difference;
+                                if (difference < new_result_maybe) {
+                                        new_result_maybe = difference;
                                     }
                 }
                 
         }
-        areYouUpTodate?(new_result_maybe);
+        areYouUpTodate(new_result_maybe);
     }
 
 }
@@ -109,13 +110,13 @@ public class ThreadedMinimumPairwiseDistance implements MinimumPairwiseDistance 
                 for (int i = values.length/2; i < values. length; i++) {                
                         for (int j = values.length/2; j < i; j++) {
                                 int difference = Math.abs(values[i] - values[j]);
-                                if (differenec < new_result_maybe) {
-                                        new_results_maybe = difference;
+                                if (difference < new_result_maybe) {
+                                        new_result_maybe = difference;
                                     }
                 }
                 
         }
-        areYouUpTodate?(new_result_maybe);
+        areYouUpTodate(new_result_maybe);
 
     }
 
@@ -135,13 +136,13 @@ public class ThreadedMinimumPairwiseDistance implements MinimumPairwiseDistance 
                 for (int i = 0; i < values. length/2; i++) {                
                         for (int j = 0; j < i + values.length/2; j++) {
                                 int difference = Math.abs(values[j] - values[i]);
-                                if (differenec < new_result_maybe) {
-                                        new_results_maybe = difference;
+                                if (difference < new_result_maybe) {
+                                        new_result_maybe = difference;
                                     }
                 }
                 
         }
-        areYouUpTodate?(new_result_maybe);
+        areYouUpTodate(new_result_maybe);
 
     }
 
